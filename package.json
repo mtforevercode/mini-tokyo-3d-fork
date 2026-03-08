@@ -61,13 +61,14 @@
     "rollup": "^4.57.1",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-visualizer": "^6.0.5",
+    "shx": "^0.4.0",
     "vuepress": "^1.9.10",
     "vuepress-plugin-flexsearch": "^0.3.0"
   },
   "scripts": {
     "build": "rollup -c",
-    "build-pages": "rm -rf build; cp -r public build; cp .npmignore dist/mini-tokyo-3d.min.* build; mkdir -p build/assets; cp assets/dictionary-*.json assets/style.json build/assets",
-    "build-data": "rm -rf build/data; mkdir -p build/data; cp assets/dictionary-*.json assets/osm-liberty.json build/data; node dist/loader",
+    "build-pages": "shx rm -rf build && shx cp -r public build && shx cp .npmignore dist/mini-tokyo-3d.min.* build && shx mkdir -p build/assets && shx cp assets/dictionary-*.json assets/style.json build/assets",
+    "build-data": "shx rm -rf build/data && shx mkdir -p build/data && shx cp assets/dictionary-*.json assets/osm-liberty.json build/data && node dist/loader",
     "build-all": "run-s build build-pages build-data docs",
     "docs": "vuepress build docs --no-cache",
     "docs:dev": "vuepress dev docs --no-cache",
